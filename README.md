@@ -12,5 +12,5 @@ cd network_lab3
 java -jar target/detector.jar
 ```
 
-The application is written on the MVS pattern, using java client, logging, fasterxml
+The application is written on the MVC pattern, using java client, logging, fasterxml
 ![view.png](view.png)
