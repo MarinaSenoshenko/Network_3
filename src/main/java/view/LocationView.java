@@ -18,8 +18,9 @@ public class LocationView extends JPanel {
     	setLocationView(location);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         LocationMouseListener mouseListener = new LocationMouseListener(this, 
-                new PanelComponents("location " + index, Constants.ELEMENT, 
+                new PanelComponents("location", String.valueOf(index), Constants.ELEMENT, 
                 Constants.PANEL, searchView, false), parent);
+        
         listAttrs.forEach(e -> e.addMouseListener(mouseListener));
     }
     

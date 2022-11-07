@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 
+import controller.ActionInView;
 import main.Main;
 import model.Location;
 import model.Near;
@@ -15,7 +16,7 @@ import java.util.Map;
 
 
 public class SearchView {
-    private String action;
+    private ActionInView actionInView;
     private JPanel placesListPanel = new JPanel();
     private final JFrame frame = new JFrame("Maps app");
     private final JPanel mainPanel = new JPanel(new BorderLayout());
@@ -99,8 +100,8 @@ public class SearchView {
             
             descriptionPanel.removeAll();
         	descriptionPanel.repaint();
-            
-            this.setAction("search " + textField.getText());
+
+            this.setActionInView(new ActionInView("search", textField.getText()));
             Main.log.info(getClass() + ": search: " +  textField.getText());
         }
     }
@@ -274,9 +275,10 @@ public class SearchView {
 
         SwingUtilities.invokeLater(task);
     }
+
     
-    public synchronized String waitAction() {
-        if (action == null) {
+    public synchronized ActionInView waitActionInView() {
+        if (actionInView == null) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -284,13 +286,13 @@ public class SearchView {
             }
         }
 
-        String curAction = action;
-        action = null;
+        ActionInView curAction = actionInView;
+        actionInView = null;
         return curAction;
     }
 
-    public synchronized void setAction(String action) {
-        this.action = action;
+    public synchronized void setActionInView(ActionInView actionInView) {
+        this.actionInView = actionInView;
         notify();
     }
     

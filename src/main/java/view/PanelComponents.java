@@ -2,7 +2,7 @@ package view;
 
 import java.awt.Color;
 
-public record PanelComponents(String action, Color color, Color enteredColor, SearchView frame,
+public record PanelComponents(String actionName, String actionParam, Color color, Color enteredColor, SearchView frame,
         boolean changeOnClick) {
 
 }

@@ -24,7 +24,7 @@ public class NearView extends JPanel {
     	listAttrs = new ArrayList<>();
         setPlaceView(near);
         NearMouseListener mouseListener = new NearMouseListener(this, 
-        		new PanelComponents("description " + near.getXid(),
+        		new PanelComponents("description", near.getXid(),
                 Constants.ELEMENT, Constants.PANEL, searchView, true));
         listAttrs.forEach(e -> e.addMouseListener(mouseListener));
         addMouseListener(mouseListener);

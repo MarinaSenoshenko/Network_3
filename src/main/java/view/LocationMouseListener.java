@@ -3,6 +3,8 @@ package view;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import controller.ActionInView;
+
 public class LocationMouseListener extends MouseAdapter {
     private final LocationListView locationListView;
     private final LocationView locationView;
@@ -41,7 +43,10 @@ public class LocationMouseListener extends MouseAdapter {
         		locationView.getListAttrs().forEach(el -> 
         		el.setBackground(panelComponents.color()));
             }
-        	panelComponents.frame().setAction(panelComponents.action());
+        	
+        	panelComponents.frame().setActionInView(new ActionInView(panelComponents.actionName(), 
+        			panelComponents.actionParam()));
+        	
             
         	locationView.setBackground(panelComponents.enteredColor());
         	locationView.getListAttrs().forEach(el -> 
