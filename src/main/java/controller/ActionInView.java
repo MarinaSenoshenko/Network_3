@@ -9,14 +9,6 @@ public class ActionInView {
     	this.actionParam = actionParam;
     }
     
-    public void setName(String actionName) {
-    	this.actionName = actionName;
-    }
-    
-    public void setParam(String actionParam) {
-    	this.actionParam = actionParam;
-    }
-    
     public String getName() {
     	return actionName;
     }
