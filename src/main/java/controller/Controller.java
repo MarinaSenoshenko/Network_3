@@ -14,19 +14,11 @@ public class Controller {
         this.searchView = searchView;
         this.httpClient = HttpClient.newHttpClient();
     }
-    
-    private String getArgs(String[] action) {
-    	try {
-            return action[1];
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return "";
-        }
-    }
+
 
     public Action getAction() {
-        String[] action = searchView.waitAction().split(" ", 2);
-        String actionName = action[0];
-
-        return factory.createObject(actionName, new ActionArgs(httpClient, getArgs(action)));       
+        ActionInView actionInView = searchView.waitActionInView();
+        
+        return factory.createObject(actionInView.getName(), new ActionArgs(httpClient, actionInView.getParam())); 
     }
 }
